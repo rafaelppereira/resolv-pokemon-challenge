@@ -10,6 +10,13 @@ export const Container = styled.div`
   justify-content: space-between;
 
   height: var(--header-height);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem;
+    text-align: center;
+  }
 `;
 
 export const Main = styled.div`

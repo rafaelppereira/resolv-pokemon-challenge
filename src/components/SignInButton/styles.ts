@@ -24,6 +24,6 @@ export const Container = styled.button`
   }
 
   @media (max-width: 1024px) {
-    display: none;
+    margin: 0;
   }
 `;
