@@ -91,6 +91,18 @@ export const DataLeft = styled.div`
     }
   }
 
+  @media (max-width: 443px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 375px) {
+    h2 {
+      font-size: 2.3rem;
+    }
+  }
+
 `;
 
 export const DataRight = styled.div`
