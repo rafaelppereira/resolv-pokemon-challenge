@@ -1,29 +1,12 @@
 import Head from 'next/head';
 
 export default function Home() {
-  return null;
-}
-
-export const getServerSideProps = () => {
-  const isAuthenticated = true;
-
-  if (isAuthenticated == true) {
-    return {
-      redirect: {
-        destination: '/app',
-        permanent: true,
-      }
-    }
-  } else {
-    return {
-      redirect: {
-        destinantion: '/app',
-        permanent: true,
-      }
-    }
-  }
-  
-  return {
-    props: {},
-  }
+  return (
+    <>
+      <Head>
+        <title>Visite os melhores lugares | Pokémon</title>
+      </Head>
+      <h1>Hello WORLD</h1>
+    </>
+  );
 }
