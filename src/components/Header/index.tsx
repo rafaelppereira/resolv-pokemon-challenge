@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useAuth } from "../../hooks/useAuth";
 
 import { NavLink } from "../NavLink";
 import { Profile } from "../Profile";
@@ -13,7 +14,7 @@ import {
 } from "./styles";
 
 export function Header() {
-  const isAuthenticated = true;
+  const { user, signOutWithGoogle } = useAuth();
 
   return (
     <Content>
@@ -33,8 +34,8 @@ export function Header() {
             <NavLink url="/">Tcg</NavLink>
             <NavLink url="/">Events</NavLink>
           </Menu>
-          {isAuthenticated ? (
-            <Profile name="Rafael Pereira" email="rafaelsantospereira03@gmail.com" avatarUrl="/profile.png" />
+          {user ? (
+            <Profile name={user?.name} email={user?.email} avatarUrl={user?.avatar} signOut={signOutWithGoogle} />
           ) : (
             <SignInButton />
           )}

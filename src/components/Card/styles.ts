@@ -32,5 +32,14 @@ export const ContentRight = styled.div`
     &:hover {
       filter: brightness(0.9);
     }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &:hover {
+        filter: brightness(1);
+      }
+    }
   }
 `;

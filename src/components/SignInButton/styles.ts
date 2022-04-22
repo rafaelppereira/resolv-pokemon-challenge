@@ -22,4 +22,8 @@ export const Container = styled.button`
   &:hover {
     filter: brightness(0.9);
   }
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;

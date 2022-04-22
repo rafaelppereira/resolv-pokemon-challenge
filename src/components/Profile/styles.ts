@@ -39,5 +39,11 @@ export const DataProfile = styled.div`
 
   span {
     color: var(--gray-400);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 210px;
+
+    display: block;
   }
 `;

@@ -5,14 +5,16 @@ import { Banner } from '../sections/Banner';
 import { useFetch } from '../hooks/useFetch';
 import { Card } from '../components/Card';
 
-import { Main, CardContainer } from '../styles/Common';
+import { Main, CardContainer, Overlay } from '../styles/Common';
+import { useAuth } from '../hooks/useAuth';
 
 interface Location {
   name: string;
 }
 
 export default function Home() {
-  const { data: locations, isFetching } = useFetch<Location[]>('https://pokeapi.co/api/v2/location/');
+  const { data: locations } = useFetch<Location[]>('https://pokeapi.co/api/v2/location/');
+  const { user, signInWithGoogle } = useAuth();
 
   return (
     <>
@@ -22,12 +24,29 @@ export default function Home() {
       <Main>
         <Banner />
         <Title name="Lugares" />
-        <CardContainer>
-          {locations?.map(item => (
-            <Card key={item.name} name={item.name} />
-          ))}
 
-        </CardContainer>
+        {user ? (
+          <CardContainer>
+            {locations?.map(item => (
+              <Card key={item.name} name={item.name} disabled="disabled" />
+            ))}
+          </CardContainer>
+        ) : (
+          <CardContainer>
+            <Overlay>
+              <h2>Faça login para visitar...</h2>
+              <button onClick={signInWithGoogle}>
+                Entrar com o Google
+              </button>
+            </Overlay>
+            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" disabled="disabled"/>
+          </CardContainer>
+        )}
       </Main>
     </>
   );

@@ -11,9 +11,9 @@ export const GlobalStyles = createGlobalStyle`
     --gray-500: #717171;
     --white-100: #ffffff;
 
-    --notification-error: #FC6258;
+    --notification-error: #F56565;
     --notification-warning: #FEBE07;
-    --notification-success: #16CC39;
+    --notification-success: #48BB78;
 
     --header-height: 7.5rem;
   }
@@ -47,4 +47,14 @@ export const GlobalStyles = createGlobalStyle`
   ul {list-style-type: none}
   a {text-decoration: none}
   button {cursor: pointer; background: transparent; border: 0}
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 6px 0 0 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--pokemon-secondary);
+  }
 `;

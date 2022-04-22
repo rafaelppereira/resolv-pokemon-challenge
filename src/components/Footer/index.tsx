@@ -6,7 +6,7 @@ import { RiHeartPulseFill } from 'react-icons/ri';
 export function Footer() {
   return (
     <Container>
-      <h4>Desenvolvido e estruturado com muito <RiHeartPulseFill />  por <Link href="https://www.linkedin.com/in/rafael-pereira-2089841b0/" passHref>Rafael Pereira</Link></h4>
+      <h4>Desenvolvido com muito <RiHeartPulseFill />  por <Link href="https://www.linkedin.com/in/rafael-pereira-2089841b0/" passHref>Rafael Pereira</Link></h4>
     </Container>
   );
 }
