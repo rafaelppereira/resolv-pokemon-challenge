@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface IContainerProps {
+  avaliable: boolean;
+}
+
+export const Container = styled.div<IContainerProps>`
   background-color: var(--pokemon-secondary);
 
   padding: 1rem;
@@ -8,6 +12,12 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
+
+  ${props =>
+    !props.avaliable &&
+    css`
+      opacity: 0.3;
+    `};
 `;
 
 export const ContentRight = styled.div`

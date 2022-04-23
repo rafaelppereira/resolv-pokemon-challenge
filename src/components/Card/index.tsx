@@ -1,28 +1,37 @@
 import Image from "next/image";
 import { useState } from "react";
+
 import { Alert } from "../Alert";
 import { Container, ContentRight } from "./styles";
 
 interface CardProps {
   name: string;
-  disabled: string;
 }
 
-export function Card({ name, disabled }: CardProps) {
+export function Card({ name }: CardProps) {
   const nameFormatted = name.split('-').join(" ");
+  const [isAvaliable, setIsAvaliable] = useState(true);
   const [alert, setAlert] = useState(false);
 
+  //This function is used to disable a location
+  function handleRemoveLocation() {
+    setIsAvaliable(false);
+    handleFunctionCloseAlert();
+  }
+
+  //This function is used to open the alert
   function handleFunctionOpenAlert() {
     setAlert(true);
   }
 
+  //This function is used to close the alert
   function handleFunctionCloseAlert() {
     setAlert(false);
   }
 
   return (
     <>
-      <Container>
+      <Container avaliable={isAvaliable}>
         <Image
           src="/map.png"
           alt="Mapa das localizações"
@@ -31,13 +40,21 @@ export function Card({ name, disabled }: CardProps) {
         />
         <ContentRight>
           <h2>{nameFormatted}</h2>
-          <button onClick={handleFunctionOpenAlert}>
-            Visitar
-          </button>
+          {isAvaliable ? (
+            <button
+              onClick={handleFunctionOpenAlert}
+            >
+              Visitar
+            </button>
+          ) : (
+            <button disabled>
+              Já visitado
+            </button>
+          )}
         </ContentRight>
       </Container>
       {alert && (
-        <Alert onClose={handleFunctionCloseAlert} id={name} cityName={nameFormatted} />
+        <Alert onClose={handleFunctionCloseAlert} cityName={nameFormatted} remove={handleRemoveLocation} />
       )}
     </>
   );

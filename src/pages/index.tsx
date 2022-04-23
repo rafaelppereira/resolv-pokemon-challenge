@@ -1,20 +1,29 @@
 import Head from 'next/head';
 
+import { Card } from '../components/Card';
 import { Title } from '../components/Title';
 import { Banner } from '../sections/Banner';
-import { useFetch } from '../hooks/useFetch';
-import { Card } from '../components/Card';
 
-import { Main, CardContainer, Overlay } from '../styles/Common';
+import { useFetch } from '../hooks/useFetch';
 import { useAuth } from '../hooks/useAuth';
+
+import {
+  Main,
+  CardContainer,
+  Overlay
+} from '../styles/Common';
 
 interface Location {
   name: string;
 }
 
 export default function Home() {
-  const { data: locations } = useFetch<Location[]>('https://pokeapi.co/api/v2/location/');
+
+  //This is a HOOK that brings the user data and login function
   const { user, signInWithGoogle } = useAuth();
+
+  //useFetch is a hook that brings the necessary information from the pokémon api
+  const { data: locations } = useFetch<Location[]>(process.env.NEXT_PUBLIC_API_ENDPOINT);
 
   return (
     <>
@@ -28,7 +37,7 @@ export default function Home() {
         {user ? (
           <CardContainer>
             {locations?.map(item => (
-              <Card key={item.name} name={item.name} disabled="disabled" />
+              <Card key={item.name} name={item.name}  />
             ))}
           </CardContainer>
         ) : (
@@ -39,12 +48,12 @@ export default function Home() {
                 Entrar com o Google
               </button>
             </Overlay>
-            <Card name="Location" disabled="disabled"/>
-            <Card name="Location" disabled="disabled"/>
-            <Card name="Location" disabled="disabled"/>
-            <Card name="Location" disabled="disabled"/>
-            <Card name="Location" disabled="disabled"/>
-            <Card name="Location" disabled="disabled"/>
+            <Card name="Location" />
+            <Card name="Location" />
+            <Card name="Location" />
+            <Card name="Location" />
+            <Card name="Location" />
+            <Card name="Location" />
           </CardContainer>
         )}
       </Main>

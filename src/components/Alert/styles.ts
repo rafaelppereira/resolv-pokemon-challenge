@@ -29,7 +29,6 @@ export const Content = styled.div`
   flex-direction: column;
 `;
 
-
 export const TitleText = styled.strong`
   font-size: 2rem;
   color: var(--gray-500);
@@ -71,6 +70,7 @@ export const CloseButton = styled.button`
     filter: brightness(0.9);
   }
 `;
+
 export const AcceptButton = styled.button`
   padding: 0.5rem 2rem;
   background-color: var(--notification-success);

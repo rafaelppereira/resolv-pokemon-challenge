@@ -11,12 +11,12 @@ import {
 import { RiCloseFill } from 'react-icons/ri';
 
 interface AlertProps {
-  onClose: () => void;
   cityName: string;
-  id: string;
+  onClose: () => void;
+  remove: () => void;
 }
 
-export function Alert({onClose, cityName, id}: AlertProps) {
+export function Alert({onClose, cityName, remove}: AlertProps) {
   return (
     <Container>
       <Content>
@@ -26,7 +26,7 @@ export function Alert({onClose, cityName, id}: AlertProps) {
           <CloseButton onClick={onClose}>
             Não
           </CloseButton>
-          <AcceptButton>
+          <AcceptButton onClick={remove}>
             Sim
           </AcceptButton>
         </ButtonContainer>
