@@ -4,6 +4,13 @@ import { Container, DataLeft, DataRight } from "./styles";
 import Image from 'next/image';
 
 export function Banner() {
+  const handleClickScrollButton = () => {
+    window.scroll({
+      top: 800,
+      behavior: "smooth"
+    })
+  }
+
   return (
     <Container>
       <DataLeft>
@@ -12,7 +19,7 @@ export function Banner() {
           Localize os lugares perfeitos que podem ser visitados
           por meio da sua Pokedex.
         </p>
-        <button>
+        <button onClick={handleClickScrollButton}>
           <RiPlayFill />
           Começar a aventura
         </button>
